@@ -32,11 +32,11 @@ public class FiltersPage {
         waitWhileElementsRedrawn("//div[@class='list-item list-item--row']", oldElements);
     }
 
-    public List<Integer> getPrices() {
+    private List<Integer> getPrices() {
         ElementsCollection priceElements = $$(".price__value");
         List<Integer> parsedPrices = new ArrayList<>();
-        for (int i = 0; i < priceElements.size(); i++) {
-            String actualPrice = priceElements.get(i).getText().replaceAll(" ", "");
+        for (SelenideElement priceElement : priceElements) {
+            String actualPrice = priceElement.getText().replaceAll(" ", "");
             parsedPrices.add(Integer.parseInt(actualPrice));
         }
         return parsedPrices;

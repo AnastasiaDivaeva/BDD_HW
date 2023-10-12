@@ -2,7 +2,6 @@ package page.objects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -33,8 +32,8 @@ public class HomePage {
         $x("//div[contains(text(),'Дніпро, Дніпропетровська область')]").click();
     }
 
-    public SelenideElement getLocationNameAfterChange() {
+    public String getLocationNameAfterChange() {
         $x("//input[@placeholder='Почніть вводити назву']").shouldBe(Condition.hidden);
-        return $x("//div[@class='location__city']");
+        return $x("//div[@class='location__city']").getText();
     }
 }
