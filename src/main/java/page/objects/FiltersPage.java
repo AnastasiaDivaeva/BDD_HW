@@ -3,7 +3,6 @@ package page.objects;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import dev.failsafe.internal.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +42,9 @@ public class FiltersPage {
         return parsedPrices;
     }
 
-    public void verifyPricesAreLessThanExpectedValue(Integer expectedValue) {
+    public boolean verifyPricesAreLessThanExpectedValue(int expectedValue) {
         List<Integer> prices = getPrices();
-        for (Integer price : prices) {
-            Assert.isTrue(price < expectedValue, "");
-        }
+        return prices.stream().allMatch(price -> price < expectedValue);
     }
 
     private void waitWhileElementsRedrawn(String newElementsXpath, List<String> oldElementsState) {

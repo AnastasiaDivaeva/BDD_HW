@@ -12,6 +12,6 @@ public class ShopPage {
     }
 
     public boolean isOrderConfirmationFound() {
-        return $x("//button[contains(text(),'Оформити замовлення')]").shouldBe(Condition.visible).exists();
+        return $x("//button[contains(text(),'Оформити замовлення')]").shouldBe(Condition.visible).isDisplayed();
     }
 }

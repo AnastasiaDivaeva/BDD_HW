@@ -1,15 +1,11 @@
 package step.definitions;
 
-import com.codeborne.selenide.ElementsCollection;
+import dev.failsafe.internal.util.Assert;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import page.objects.FiltersPage;
 
 import java.util.List;
-
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$$x;
 
 public class FiltersPageStepDefinitions {
     FiltersPage filtersPage = new FiltersPage();
@@ -20,7 +16,7 @@ public class FiltersPageStepDefinitions {
     }
 
     @When("Guest set upper price to {int}")
-    public void setUpperPriceToFilter(Integer upperPrice) {
+    public void setUpperPriceToFilter(int upperPrice) {
         filtersPage.setUpperPriceToFilter(upperPrice);
     }
 
@@ -35,8 +31,9 @@ public class FiltersPageStepDefinitions {
     }
 
     @Then("Verify that all prices are less than {int} value")
-    public void verifyPricesAreLessThanExpectedValue(Integer expectedValue) {
-        filtersPage.verifyPricesAreLessThanExpectedValue(expectedValue);
+    public void verifyPricesAreLessThanExpectedValue(int expectedValue) {
+        boolean result = filtersPage.verifyPricesAreLessThanExpectedValue(expectedValue);
+        Assert.isTrue(result, "");
     }
 
 }

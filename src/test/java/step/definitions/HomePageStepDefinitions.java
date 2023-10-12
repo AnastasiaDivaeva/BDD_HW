@@ -41,7 +41,7 @@ public class HomePageStepDefinitions {
 
     @Then("Guest verifies that the city name has become {string}")
     public void getTitleAfterChooseCity(String input) {
-        String actual = homePage.getLocationNameAfterChange();
+        String actual = homePage.getLocationNameAfterChange().getText();
         Assert.assertTrue(actual.contains(input));
     }
 }

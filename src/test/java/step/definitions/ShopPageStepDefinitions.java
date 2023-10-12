@@ -13,7 +13,7 @@ public class ShopPageStepDefinitions {
         shopPage.clickOnBuyButton();
     }
 
-    @Then("Guest verifies that order confirmation found")
+    @Then("Guest verifies that the order confirmation button is displayed")
     public void isOrderConfirmationFound() {
         Assert.assertTrue(shopPage.isOrderConfirmationFound());
     }
